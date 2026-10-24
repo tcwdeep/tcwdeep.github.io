@@ -98,8 +98,8 @@ function list() {
   root.replaceChildren(
     notes.length ? el('div', { class: 'tools' }, s) : '',
     subjects.length > 1 ? el('div', { class: 'chips' }, subjects.map(x => el('button', { class: 'chip' + (x === filter ? ' on' : ''), onclick: () => { filter = x; list(); } }, x))) : '',
-    shown.length ? shown.map(n => el('button', { class: 'card', onclick: () => { location.hash = '#/' + n.slug; } },
-      el('h3', null, n.title), el('div', { class: 'meta' }, n.subject + ' · ' + n.date), n.desc ? el('p', null, n.desc) : '')) : el('div', { class: 'empty' }, 'No notes found.'));
+    shown.length ? el('div', null, shown.map(n => el('button', { class: 'card', onclick: () => { location.hash = '#/' + n.slug; } },
+      el('h3', null, n.title), el('div', { class: 'meta' }, n.subject + ' · ' + n.date), n.desc ? el('p', null, n.desc) : ''))) : el('div', { class: 'empty' }, 'No notes found.'));
 }
 
 async function read(slug) {
