@@ -78,10 +78,10 @@ function mdHtml(src) {
     .replace(/\$\$([\s\S]+?)\$\$/g, (m, t) => stash(t, true))
     .replace(/\\\[([\s\S]+?)\\\]/g, (m, t) => stash(t, true))
     .replace(/\\\(([\s\S]+?)\\\)/g, (m, t) => stash(t, false))
-    .replace(/(^|[^\\$])\$(?!\s)([^\n$]+?)(?<!\s)\$/g, (m, p, t) => p + stash(t, false));
+    .replace(/(^|[^\\$])\$([^\n$]+?)\$/g, (m, p, t) => p + stash(t, false));
   const html = DOMPurify.sanitize(marked.parse(s, { gfm: true, breaks: true })).replace(/MATHTOKEN(\d+)X/g, (m, i) => {
     const [t, d] = maths[+i];
-    try { return katex.renderToString(t, { displayMode: d, output: 'mathml', throwOnError: false }); } catch (e) { return ''; }
+    try { return katex.renderToString(t, { displayMode: d, output: 'mathml', throwOnError: false }); } catch (e) { return d ? '$$' + t + '$$' : '$' + t + '$'; }
   });
   const box = el('div', { class: 'md' });
   box.innerHTML = html;
