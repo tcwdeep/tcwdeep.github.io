@@ -13,4 +13,11 @@
     "date": "2026-10-25",
     "desc": "Medical Physics (E4) Ch.1 Human Vision and Fibre Optic Endoscopy."
   }
+   {
+    "slug": "Human Hearing",
+    "title": "Medical Physics: Human hearing"
+    "subject": "Physics",
+    "date": "2026-10-25",
+    "desc": "Medical Physics (E4) Ch.2 Human hearing(Ch.2 covers 2.1.1 to 2.1.4 not incluse 2.2)."
+  }
 ]
